@@ -9,17 +9,17 @@ namespace OOP
     public class Shape
     {
         public string name { get; set; }
+        public const int SHAPE_TYPE = 1;
 
         protected double width, length;
 
-        private int id;
-        private int result;
-        public const int SHAPE_TYPE = 1;
+        private int id = 0;
 
-      
-        public Shape(double dWidth, double dLength)
+        private int result;
+
+        public Shape(double dWidth, double dLength, int id)
         {
-            this.id = 99;
+            this.id = id+1; //unique id 
             this.width = dWidth;
             this.length = dLength;
         }
@@ -43,11 +43,15 @@ namespace OOP
             return result;
         }
 
-        public static int ReturningObjShape()
+        public static int ReturningObjShape(int shape)
         {
-            return SHAPE_TYPE;
+            return shape;
         }
-       
+
+        public virtual void returnObjValues(Shape shapeObj)
+        {
+            Console.WriteLine("\nThe Obj name is: " + name + "\nWidth is: " + width + "\nLength is: " + length + "\nid: " + id);
+        }
 
     }
 }
